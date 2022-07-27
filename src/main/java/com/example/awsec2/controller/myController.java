@@ -9,4 +9,8 @@ public class myController {
     public String welcome(){
         return "This is Test Spring Boot Project";
     }
+    @GetMapping("/call")
+    public String call(){
+        return "Calling ...";
+    }
 }

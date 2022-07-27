@@ -2,19 +2,30 @@ pipeline {
     agent any
     tools{
         maven 'maven_3.8.6'
+        docker 'docker_latest'
     }
     stages{
+    stage('checkout from github'){
+                steps{
+                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Dev-Gopi/awsec2']]])
+                }
+            }
         stage('build mvn project'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Dev-Gopi/awsec2']]])
                 sh 'mvn clean package shade:shade'
             }
         }
-//         stage('build docker image'){
+        stage('build docker image'){
+            steps{
+                script{
+                    sh 'docker image build -t ws-ec2-test:latest .'
+                }
+            }
+        }
+//         stage('run docker image'){
 //             steps{
 //                 script{
-//                     sh 'docker image build -t devops-integration:latest .'
-//                     sh 'docker run -d -p 8081:8080  devops-integration:latest'
+//                     sh 'docker run -d -p 8081:8080 ws-ec2-test:latest'
 //                 }
 //             }
 //         }

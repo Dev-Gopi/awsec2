@@ -5,23 +5,23 @@ pipeline {
 //         docker 'docker_latest'
     }
     stages{
-    stage('checkout from github'){
-                steps{
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Dev-Gopi/awsec2']]])
-                }
+        stage('checkout from github'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Dev-Gopi/awsec2']]])
             }
+        }
         stage('build mvn project'){
             steps{
                 sh 'mvn clean package shade:shade'
             }
         }
-        stage('build docker image'){
-            steps{
-                script{
-                    sh 'docker image build -t aws-ec2-test.jar:latest .'
-                }
-            }
-        }
+//         stage('build docker image'){
+//             steps{
+//                 script{
+//                     sh 'docker image build -t aws-ec2-test.jar:latest .'
+//                 }
+//             }
+//         }
 //         stage('run docker image'){
 //             steps{
 //                 script{

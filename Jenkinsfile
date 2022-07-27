@@ -14,13 +14,13 @@ pipeline {
                 sh 'mvn clean package shade:shade'
             }
         }
-//         stage('build docker image'){
-//             steps{
-//                 script{
-//                     sh 'docker image build -t aws-ec2-test:latest .'
-//                 }
-//             }
-//         }
+        stage('build docker image'){
+            steps{
+                script{
+                    sh 'docker image build -t aws-ec2-test:latest .'
+                }
+            }
+        }
 //         stage('run docker image'){
 //             steps{
 //                 script{

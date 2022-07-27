@@ -3,6 +3,12 @@ pipeline {
     tools{
         maven 'maven_3.8.6'
     }
+      agent {
+            docker {
+                image 'node:14-alpine'
+                args '-v $HOME:/home/jenkins'
+            }
+        }
     stages{
         stage('checkout from github'){
             steps{

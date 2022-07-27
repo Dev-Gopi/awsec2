@@ -37,6 +37,7 @@
 				<version>${project.parent.version}</version>
 			</plugin>
 		</plugins>
+		<finalName>aws-ec2-test</finalName>
 	</build>
 
 </project>

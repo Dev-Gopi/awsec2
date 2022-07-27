@@ -18,7 +18,7 @@ pipeline {
         stage('build docker image'){
             steps{
                 script{
-                    sh 'docker image build -t ws-ec2-test:latest .'
+                    sh 'docker image build -t aws-ec2-test.jar:latest .'
                 }
             }
         }

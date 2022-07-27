@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools{
         maven 'maven_3.8.6'
-        docker 'docker_latest'
+//         docker 'docker_latest'
     }
     stages{
     stage('checkout from github'){

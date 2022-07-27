@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools{
         maven 'maven_3.8.6'
-//         docker 'docker_latest'
     }
     stages{
         stage('checkout from github'){
@@ -15,13 +14,13 @@ pipeline {
                 sh 'mvn clean package shade:shade'
             }
         }
-//         stage('build docker image'){
-//             steps{
-//                 script{
-//                     sh 'docker image build -t aws-ec2-test.jar:latest .'
-//                 }
-//             }
-//         }
+        stage('build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t aws-ec2-test:latest .'
+                }
+            }
+        }
 //         stage('run docker image'){
 //             steps{
 //                 script{

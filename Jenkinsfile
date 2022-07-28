@@ -4,24 +4,24 @@ pipeline {
         maven 'maven_3.8.6'
     }
     stages{
-        stage('checkout from github'){
+        stage('Checkout from github'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Dev-Gopi/awsec2']]])
             }
         }
-        stage('build mvn project'){
+        stage('Build mvn project'){
             steps{
                 sh 'mvn clean package shade:shade'
             }
         }
-        stage('build docker image'){
+        stage('Build docker image'){
             steps{
                 script{
                     sh 'docker image build -t aws-ec2-test:latest .'
                 }
             }
         }
-        stage('run docker image'){
+        stage('Run docker image'){
             steps{
                 script{
                     sh 'docker run -d -p 8081:8082 aws-ec2-test:latest'
@@ -32,7 +32,7 @@ pipeline {
         //     steps {
         //         withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
         //         sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-        //         sh 'docker push devops-integration:latest'
+        //         sh 'docker push aws-ec2-test:latest'
         //     }
         // }
     }

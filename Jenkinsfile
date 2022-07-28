@@ -24,7 +24,7 @@ pipeline {
 //         stage('run docker image'){
 //             steps{
 //                 script{
-//                     sh 'docker run -d -p 8081:8080 ws-ec2-test:latest'
+//                     sh 'docker run -d -p 8081:8082 ws-ec2-test:latest'
 //                 }
 //             }
 //         }

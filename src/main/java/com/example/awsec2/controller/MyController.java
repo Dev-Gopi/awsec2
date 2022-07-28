@@ -16,7 +16,7 @@ public class MyController {
     }
     @GetMapping("/call")
     public String call(){
-        logger.error("Calling...");
+        logger.info("Calling...");
         return "Calling ...";
     }
 }

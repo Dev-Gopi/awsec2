@@ -21,13 +21,13 @@ pipeline {
                 }
             }
         }
-//         stage('run docker image'){
-//             steps{
-//                 script{
-//                     sh 'docker run -d -p 8081:8082 ws-ec2-test:latest'
-//                 }
-//             }
-//         }
+        stage('run docker image'){
+            steps{
+                script{
+                    sh 'docker run -d -p 8081:8082 ws-ec2-test:latest'
+                }
+            }
+        }
         // stage('Docker Push') {
         //     steps {
         //         withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
